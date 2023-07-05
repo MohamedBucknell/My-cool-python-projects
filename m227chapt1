@@ -1,0 +1,23 @@
+import math
+print("Enter 0 to stop")
+list=[]
+while True:
+    number=int(input('Enter integer in the list: '))
+    if number==0:
+        break
+    list.append(number)
+avg=sum(list)/len(list)
+nom=0
+for num in list:
+    nom+=(num-avg)*(num-avg)
+variance=nom/(len(list)-1)
+stdeviation=math.sqrt(variance)
+print('Minimmum: '+str(min(list)))
+print('Maximum: '+str(max(list)))
+print('Mean: '+str(avg))
+print('Median: '+str(list[len(list)//2]))
+print('25th quartile: '+str(list[len(list)//4]))
+
+print('Variance: '+str(variance))
+print('Standard Deviation: '+str(stdeviation))
+
