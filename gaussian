@@ -1,0 +1,26 @@
+eqs = [[2, 3, -1, 9], [4, 1, 2, 1], [1, -1, 1, 2]]
+num_cols = len(eqs[0])
+multiplier_row2 = -1
+for col in range(num_cols):
+    if eqs[0][col] != 0 and int(eqs[1][col] / eqs[0][col]) == eqs[1][col] / eqs[0][col]:
+        multiplier_row2 = eqs[1][col] / eqs[0][col]
+        break
+eqs[1] = [eqs[1][i] - multiplier_row2 * eqs[0][i] for i in range(num_cols)]
+multiplier_row3 = -1
+for col in range(1, num_cols):
+    if eqs[1][col] != 0 and (int(eqs[2][col] / eqs[1][col]) == eqs[2][col] / eqs[1][col] or
+                             eqs[2][col] / eqs[1][col] in [0.5, -0.5, 1/3, -1]):
+        multiplier_row3 = eqs[2][col] / eqs[1][col]
+        break
+eqs[2] = [eqs[2][i] - multiplier_row3 * eqs[1][i] for i in range(num_cols)]
+print("\nThe Upper Triangular Matrix and RHS Vector:")
+for row in eqs:
+    print(row)
+print(f"\nMultiplier for row 2: {multiplier_row2}")
+print(f"Multiplier for row 3: {multiplier_row3}")
+try:
+    z = eqs[2][-1] / eqs[2][-2]
+    print(f"\nThe value of z is: {z}")
+except ZeroDivisionError:
+    print("Error: Division by zero occurred while solving for z")
+print("\nUse the value of z to obtain the values of x and y. Contact me for more information.")
